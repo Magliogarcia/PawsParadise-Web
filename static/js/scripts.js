@@ -105,13 +105,13 @@ async function getSesionActual() {
 
 async function cerrarSesion() {
     localStorage.removeItem('sesionActual');
-    await fetch('http://pawsparadise.xo.je/admin/cerrar_sesion.php').catch(() => {});
+    await fetch('https://pawsparadise.xo.je/admin/cerrar_sesion.php').catch(() => {});
     window.location.href = 'index.html';
 }
 
 async function registrarUsuario(nombre, apellido, cedula, email, telefono, password, tipo) {
     try {
-        const response = await fetch('http://pawsparadise.xo.je/admin/registro.php', {
+        const response = await fetch('https://pawsparadise.xo.je/admin/registro.php', {
             method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ nombre, apellido, cedula, email, telefono, password, tipo })
         });
@@ -122,7 +122,7 @@ async function registrarUsuario(nombre, apellido, cedula, email, telefono, passw
 
 async function iniciarSesion(email, password) {
     try {
-        const response = await fetch('http://pawsparadise.xo.je/admin/login_ajax.php', {
+        const response = await fetch('https://pawsparadise.xo.je/admin/login_ajax.php', {
             method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
         });
@@ -201,7 +201,7 @@ async function cargarProductosDestacados() {
     if (!contenedor) return;
 
     try {
-        const response = await fetch('http://pawsparadise.xo.je/admin/productos_api.php?accion=listar');
+        const response = await fetch('https://pawsparadise.xo.je/admin/productos_api.php?accion=listar');
         const data = await response.json();
         
         if (data.success && data.productos.length > 0) {
@@ -240,7 +240,7 @@ async function cargarProductosTienda() {
     if (!contenedor) return;
 
     try {
-        const response = await fetch('http://pawsparadise.xo.je/admin/productos_api.php?accion=listar');
+        const response = await fetch('https://pawsparadise.xo.je/admin/productos_api.php?accion=listar');
         const data = await response.json();
         
         if (data.success && data.productos.length > 0) {
@@ -345,7 +345,7 @@ async function cargarMisPedidos() {
     if (!sesion) { window.location.href = 'login.html'; return; }
 
     try {
-        const response = await fetch(`http://pawsparadise.xo.je/admin/pedidos_api.php?accion=listar_cliente&usuario_id=${sesion.id}`);
+        const response = await fetch(`https://pawsparadise.xo.je/admin/pedidos_api.php?accion=listar_cliente&usuario_id=${sesion.id}`);
         const data = await response.json();
 
         if (data.success) {
@@ -453,7 +453,7 @@ async function cargarInventarioAdmin() {
 
     try {
         const sesion = await getSesionActual();
-        const response = await fetch(`http://pawsparadise.xo.je/admin/productos_api.php?accion=listar&rol_usuario=${sesion ? sesion.tipo : ''}`);
+        const response = await fetch(`https://pawsparadise.xo.je/admin/productos_api.php?accion=listar&rol_usuario=${sesion ? sesion.tipo : ''}`);
         const data = await response.json();
         
         if (data.success) {
@@ -490,7 +490,7 @@ window.eliminarProductoAdmin = function(id, nombre) {
 async function ejecutarEliminacion(id) {
     try {
         const sesion = await getSesionActual();
-        const response = await fetch('http://pawsparadise.xo.je/admin/productos_api.php?accion=eliminar', {
+        const response = await fetch('https://pawsparadise.xo.je/admin/productos_api.php?accion=eliminar', {
             method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: `id=${id}&rol_usuario=${sesion ? sesion.tipo : ''}`
         });
         const data = await response.json();
@@ -504,7 +504,7 @@ async function cargarPedidosAdmin() {
 
     try {
         const sesion = await getSesionActual();
-        const response = await fetch(`http://pawsparadise.xo.je/admin/pedidos_api.php?accion=listar_admin&rol_usuario=${sesion ? sesion.tipo : ''}`);
+        const response = await fetch(`https://pawsparadise.xo.je/admin/pedidos_api.php?accion=listar_admin&rol_usuario=${sesion ? sesion.tipo : ''}`);
         const data = await response.json();
 
         if (data.success) {
@@ -537,7 +537,7 @@ async function cargarPedidosAdmin() {
 window.cambiarEstadoPedido = async function(id, nuevoEstado, selectElement) {
     try {
         const sesion = await getSesionActual();
-        const response = await fetch('http://pawsparadise.xo.je/admin/pedidos_api.php?accion=actualizar_estado', {
+        const response = await fetch('https://pawsparadise.xo.je/admin/pedidos_api.php?accion=actualizar_estado', {
             method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, 
             body: `id=${id}&estado=${nuevoEstado}&rol_usuario=${sesion ? sesion.tipo : ''}`
         });
@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     formData.append('metodo_pago', metodo);
                     formData.append('productos', JSON.stringify(carrito));
 
-                    const response = await fetch('http://pawsparadise.xo.je/admin/pedidos_api.php?accion=crear', {
+                    const response = await fetch('https://pawsparadise.xo.je/admin/pedidos_api.php?accion=crear', {
                         method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: formData
                     });
                     const result = await response.json();
@@ -751,7 +751,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             formData.append('rol_usuario', sesionActual ? sesionActual.tipo : '');
 
             try {
-                const response = await fetch('http://pawsparadise.xo.je/admin/productos_api.php?accion=guardar', { method: 'POST', body: formData });
+                const response = await fetch('https://pawsparadise.xo.je/admin/productos_api.php?accion=guardar', { method: 'POST', body: formData });
                 const data = await response.json();
                 if (data.success) { mostrarNotificacionLocal(data.message, 'success'); cerrarModalProducto(); cargarInventarioAdmin(); } 
                 else { mostrarNotificacionLocal(data.error, 'error'); }
