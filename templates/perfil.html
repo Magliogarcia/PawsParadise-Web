@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil · Paws Paradise</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Paws Paradise</span>
+                </a>
+                
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="perfil.html" class="active">Mi Perfil</a></li>
+                        <li><a href="#" id="cerrar-sesion" onclick="cerrarSesion(); return false;">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <div class="container">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-welcome">
+                        <h1>¡Bienvenido de nuevo, <span id="user-name">Cliente</span>!</h1>
+                        <p>Aquí puedes ver tu información y el historial de tus compras</p>
+                    </div>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-card personal-data">
+                        <div class="card-header">
+                            <i class="fas fa-id-card"></i>
+                            <h2>Mis Datos Personales</h2>
+                            <button class="btn-edit" id="edit-profile" title="Editar perfil">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="info-container" id="info-container">
+                            <div class="info-item">
+                                <span class="info-label">Nombre completo:</span>
+                                <span class="info-value">Juan Carlos Rodríguez</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Correo electrónico:</span>
+                                <span class="info-value">juan@email.com</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Teléfono:</span>
+                                <span class="info-value">0412-1234567</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Cédula:</span>
+                                <span class="info-value">V-12345678</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Dirección:</span>
+                                <span class="info-value">Av. Principal, Edif. 123, Caracas</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Miembro desde:</span>
+                                <span class="info-value">15 marzo, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-card purchase-history">
+                        <div class="card-header">
+                            <i class="fas fa-history"></i>
+                            <h2>Historial de Compras</h2>
+                            <span class="badge" id="purchase-count">3 compras</span>
+                        </div>
+
+                        <div class="purchase-list" id="purchase-list">
+                            <div class="purchase-item">
+                                <div class="purchase-header">
+                                    <span class="purchase-date">
+                                        <i class="fas fa-calendar"></i> 10 marzo, 2026
+                                    </span>
+                                    <span class="purchase-total">$124.97</span>
+                                </div>
+                                <div class="purchase-products">
+                                    <span class="product-tag">Alimento Perro Adulto (x2)</span>
+                                    <span class="product-tag">Collar Reflectivo (x1)</span>
+                                    <span class="product-tag">Juguete Cuerda (x3)</span>
+                                </div>
+                                <div class="purchase-footer">
+                                    <span class="payment-method">
+                                        <i class="fas fa-credit-card"></i> Transferencia
+                                    </span>
+                                    <span class="purchase-status status-completed">
+                                        <i class="fas fa-check-circle"></i> Entregado
+                                    </span>
+                                    <button class="btn-view-invoice" title="Ver factura">
+                                        <i class="fas fa-file-invoice"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="purchase-item">
+                                <div class="purchase-header">
+                                    <span class="purchase-date">
+                                        <i class="fas fa-calendar"></i> 25 febrero, 2026
+                                    </span>
+                                    <span class="purchase-total">$89.50</span>
+                                </div>
+                                <div class="purchase-products">
+                                    <span class="product-tag">Arena Gatos (x2)</span>
+                                    <span class="product-tag">Comedero Elevado (x1)</span>
+                                </div>
+                                <div class="purchase-footer">
+                                    <span class="payment-method">
+                                        <i class="fas fa-money-bill"></i> Efectivo
+                                    </span>
+                                    <span class="purchase-status status-pending">
+                                        <i class="fas fa-clock"></i> Pendiente
+                                    </span>
+                                    <button class="btn-view-invoice" title="Ver factura">
+                                        <i class="fas fa-file-invoice"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="purchase-item">
+                                <div class="purchase-header">
+                                    <span class="purchase-date">
+                                        <i class="fas fa-calendar"></i> 12 febrero, 2026
+                                    </span>
+                                    <span class="purchase-total">$215.99</span>
+                                </div>
+                                <div class="purchase-products">
+                                    <span class="product-tag">Cama Ortopédica (x1)</span>
+                                    <span class="product-tag">Alimento Premium (x3)</span>
+                                    <span class="product-tag">Correa Retráctil (x1)</span>
+                                </div>
+                                <div class="purchase-footer">
+                                    <span class="payment-method">
+                                        <i class="fab fa-paypal"></i> PayPal
+                                    </span>
+                                    <span class="purchase-status status-completed">
+                                        <i class="fas fa-check-circle"></i> Entregado
+                                    </span>
+                                    <button class="btn-view-invoice" title="Ver factura">
+                                        <i class="fas fa-file-invoice"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="no-purchases" id="no-purchases" style="display: none;">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>Aún no has realizado ninguna compra</p>
+                            <a href="productos.html" class="btn-primary">
+                                <i class="fas fa-store"></i> Comprar ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div class="stat-info">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">Total compras</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div class="stat-info">
+                            <span class="stat-value">$1,234</span>
+                            <span class="stat-label">Gastado</span>
+                        </div>
+                    </div>
+
+                <div class="profile-actions">
+                    <a href="index.html" class="btn-secondary">
+                        <i class="fas fa-home"></i> Seguir comprando
+                    </a>
+                    <a href="login.html" class="btn-logout" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-paw"></i>
+                        <span>Paws Paradise</span>
+                    </div>
+                    <p class="footer-text">Cuidado y bienestar para quienes nos dan amor incondicional.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws Paradise. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legalidad · Paws Paradise</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+ </head>
+  <body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Paws Paradise</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="legal-page">
+        <div class="container">
+            <section =id"terminos">
+            <h1>Términos y Condiciones</h1>
+            <p class="fecha-actualizacion">Última actualización: 15 de marzo, 2026</p>
+            
+            <section>
+                <h2>1. Aceptación de los términos</h2>
+                <p>Al realizar una compra en Paws Paradise, aceptas los siguientes términos...</p>
+            </section>
+            
+            <section>
+                <h2>2. Productos y precios</h2>
+                <p>Los precios están expresados en dólares americanos e incluyen impuestos...</p>
+            </section>
+            
+            <section>
+                <h2>3. Métodos de pago</h2>
+                <p>Aceptamos transferencias bancarias, efectivo (retiro en tienda) y PayPal...</p>
+            </section>
+            
+            <section>
+                <h2>4. Política de devoluciones</h2>
+                <p>Tienes 7 días para realizar devoluciones con el producto en perfecto estado...</p>
+            </section>
+        </div>
+    </main>
+
+    <hr class="legal-divider">
+
+    <section id="privacidad">
+            <h1>Política de Privacidad</h1>
+            <p class="fecha-actualizacion">Última actualización: 15 de marzo, 2026</p>
+            
+            <section>
+                <h2>1. Datos que recopilamos</h2>
+                <p>Recopilamos nombre, apellido, cédula, teléfono, correo electrónico y dirección para procesar tus compras...</p>
+            </section>
+            
+            <section>
+                <h2>2. Uso de la información</h2>
+                <p>Tus datos solo se utilizan para:</p>
+                <ul>
+                    <li>Procesar tus pedidos</li>
+                    <li>Enviar confirmaciones de compra</li>
+                    <li>Mejorar nuestros servicios</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>3. Protección de datos</h2>
+                <p>Implementamos medidas de seguridad para proteger tu información personal...</p>
+            </section>
+            
+            <section>
+                <h2>4. Contacto</h2>
+                <p>Para dudas sobre privacidad: pawsparadise@gmail.com</p>
+            </section>
+            
+            <a href="formulario.html" class="btn btn-primary">← Volver al formulario</a>
+        </div>
+    </main>
+
+      <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-paw"></i>
+                        <span>Paws Paradise</span>
+                    </div>
+                    <p class="footer-text">Cuidado y bienestar para quienes nos dan amor incondicional.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws Paradise. Todos los derechos reservados.</p>
+                <p class="footer-disclaimer"><i class="fas fa-paw"></i> Hecho con amor para amigos peludos</p>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+ </body>
+</html>

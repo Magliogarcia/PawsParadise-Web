@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de Envío y Pago · Paws Paradise</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">images
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{{ url_for('home') }}" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Paws Paradise</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section style="padding: 60px 0; background: var(--bg-light); min-height: 80vh;">
+            <div class="container" style="max-width: 700px;">
+                <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h2 style="margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 15px;"><i class="fas fa-truck"></i> Datos de Envío y Pago</h2>
+                    
+                    <form id="checkout-form">
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #e0e0e0;">
+                            <h4 style="margin-bottom: 15px; color: var(--primary);"><i class="fas fa-user-check"></i> Tus Datos Personales</h4>
+                            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                                <div style="flex: 1;">
+                                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Nombre</label>
+                                    <input type="text" id="checkout-nombre" readonly style="width: 100%; padding: 10px; background: #eee; border: 1px solid #ccc; border-radius: 5px; color: #666;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Apellido</label>
+                                    <input type="text" id="checkout-apellido" readonly style="width: 100%; padding: 10px; background: #eee; border: 1px solid #ccc; border-radius: 5px; color: #666;">
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 15px;">
+                                <div style="flex: 1;">
+                                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Correo Electrónico</label>
+                                    <input type="email" id="checkout-email" readonly style="width: 100%; padding: 10px; background: #eee; border: 1px solid #ccc; border-radius: 5px; color: #666;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Teléfono</label>
+                                    <input type="text" id="checkout-telefono" readonly style="width: 100%; padding: 10px; background: #eee; border: 1px solid #ccc; border-radius: 5px; color: #666;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-bottom: 15px; color: var(--text-dark);"><i class="fas fa-map-marker-alt"></i> Datos de Entrega</h4>
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Cédula de Identidad *</label>
+                            <input type="text" id="checkout-cedula" required placeholder="Ej: V-12345678" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Dirección de Envío *</label>
+                            <input type="text" id="checkout-direccion" required placeholder="Av. Principal, Edificio, Piso..." style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 30px;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Ciudad *</label>
+                            <input type="text" id="checkout-ciudad" required placeholder="Ej: Valencia" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                        </div>
+
+                        <h4 style="margin-bottom: 15px; color: var(--text-dark); border-top: 2px solid #eee; padding-top: 20px;"><i class="fas fa-wallet"></i> Método de Pago</h4>
+                        
+                        <div style="display: flex; gap: 30px; margin-bottom: 20px;">
+                            <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 1.1rem;">
+                                <input type="radio" name="metodo-pago" value="efectivo" checked style="transform: scale(1.2);"> 
+                                <i class="fas fa-money-bill-wave" style="color: #27ae60;"></i> Efectivo
+                            </label>
+                            <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 1.1rem;">
+                                <input type="radio" name="metodo-pago" value="pagomovil" style="transform: scale(1.2);"> 
+                                <i class="fas fa-mobile-alt" style="color: #2980b9;"></i> Pago Móvil
+                            </label>
+                        </div>
+
+                        <div id="panel-pagomovil" style="display: none; background: #e3f2fd; padding: 25px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #bbdefb;">
+                            <h5 style="margin-bottom: 15px; color: #1565c0; font-size: 1.1rem;"><i class="fas fa-info-circle"></i> Datos para transferencia</h5>
+                            
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <ul style="list-style: none; padding: 0; margin: 0; color: #333; line-height: 1.8;">
+                                    <li><strong>Banco:</strong> BNC (0102)</li>
+                                    <li><strong>Teléfono:</strong> 0414-5812979</li>
+                                    <li><strong>Cédula:</strong> V-30709751</li>
+                                </ul>
+                            </div>
+
+                            <div style="background: var(--primary); color: white; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <span style="display: block; font-size: 0.9rem; opacity: 0.9; margin-bottom: 5px;">Monto a transferir (Tasa: 483.87 Bs/$)</span>
+                                <strong style="font-size: 1.8rem;" id="monto-bolivares">0.00 Bs</strong>
+                            </div>
+
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #1565c0;">Referencia de la transacción *</label>
+                                <input type="text" id="referencia-pago" placeholder="Ej: 123456" style="width: 100%; padding: 12px; border: 2px solid #90caf9; border-radius: 5px; font-size: 1.1rem;">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-auth" style="width: 100%; padding: 15px; font-size: 1.2rem; border-radius: 8px; margin-top: 10px;">
+                            <i class="fas fa-check-circle"></i> Confirmar y Generar Factura
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios · Paws Paradise</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{{ url_for('home') }}" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Paws Paradise</span>
+                </a>
+                
+                <nav class="nav">
+                    <ul>
+                        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('render_page', page_name='productos') }}">Productos</a></li>
+                        <li><a href="{{ url_for('render_page', page_name='servicios') }}" class="active">Servicios</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Nuestros Servicios</h1>
+                <p>Cuidado profesional para la felicidad de tu mascota</p>
+            </div>
+        </section>
+
+        <section class="services-detail">
+            <div class="container">
+                <div class="services-grid-large">
+                    <article class="service-card-large">
+                        <div class="service-image">
+                            <img src="{{ url_for('static', filename='images/peluqueria.webp') }}" alt="Peluquería canina" loading="lazy">
+                        </div>
+                        <div class="service-content">
+                            <h2>Peluquería Canina</h2>
+                            <p class="service-description">Servicio profesional de estética y cuidado para tu perro. Nuestros peluqueros están especialmente capacitados para hacer de la experiencia algo placentero para tu mascota.</p>
+                            
+                            <div class="service-features">
+                                <h3>Incluye:</h3>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Baño con productos hipoalergénicos</li>
+                                    <li><i class="fas fa-check-circle"></i> Corte de uñas</li>
+                                    <li><i class="fas fa-check-circle"></i> Limpieza de oídos</li>
+                                    <li><i class="fas fa-check-circle"></i> Corte de pelo según raza</li>
+                                    <li><i class="fas fa-check-circle"></i> Cepillado dental</li>
+                                    <li><i class="fas fa-check-circle"></i> Perfume y lazo decorativo</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="service-pricing">
+                                <h3>Precios:</h3>
+                                <table class="price-table">
+                                    <tr>
+                                        <td>Raza pequeña (hasta 10kg)</td>
+                                        <td class="price">$25.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Raza mediana (11-25kg)</td>
+                                        <td class="price">$35.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Raza grande (26-40kg)</td>
+                                        <td class="price">$45.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Raza gigante (+40kg)</td>
+                                        <td class="price">$55.00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <a href="https://wa.me/582121234567" class="btn btn-primary">Reservar cita</a>
+                        </div>
+                    </article>
+
+                    <article class="service-card-large reverse">
+                        <div class="service-image">
+                            <img src="{{ url_for('static', filename='images/vete.webp') }}" alt="Consultas veterinarias" loading="lazy">
+                        </div>
+                        <div class="service-content">
+                            <h2>Consultas Veterinarias</h2>
+                            <p class="service-description">Atención médica preventiva y curativa para perros y gatos. Contamos con veterinarios especializados y equipo moderno para el diagnóstico y tratamiento.</p>
+                            
+                            <div class="service-features">
+                                <h3>Servicios:</h3>
+                                <ul>
+                                    <li><i class="fas fa-check-circle"></i> Consulta general</li>
+                                    <li><i class="fas fa-check-circle"></i> Vacunación</li>
+                                    <li><i class="fas fa-check-circle"></i> Desparasitación</li>
+                                    <li><i class="fas fa-check-circle"></i> Cirugías menores</li>
+                                    <li><i class="fas fa-check-circle"></i> Rayos X y ecografías</li>
+                                    <li><i class="fas fa-check-circle"></i> Laboratorio clínico</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="service-pricing">
+                                <h3>Precios:</h3>
+                                <table class="price-table">
+                                    <tr>
+                                        <td>Consulta general</td>
+                                        <td class="price">$30.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vacuna múltiple</td>
+                                        <td class="price">$25.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desparasitación</td>
+                                        <td class="price">$15.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Certificado de salud</td>
+                                        <td class="price">$20.00</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <a href="https://wa.me/582121234567" class="btn btn-primary">Agendar consulta</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="additional-services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Servicios Adicionales</h2>
+                    <p>Todo lo que tu mascota merece</p>
+                </div>
+                
+                <div class="services-grid-small">
+                    <div class="service-mini-card">
+                        <div class="mini-icon">
+                            <i class="fas fa-bone"></i>
+                        </div>
+                        <h3>Tienda de mascotas</h3>
+                        <p>Alimentos, accesorios y juguetes de calidad</p>
+                    </div>
+                    
+                    <div class="service-mini-card">
+                        <div class="mini-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Sesión de fotos</h3>
+                        <p>Fotos profesionales con tu mascota</p>
+                    </div>
+                    
+                    <div class="service-mini-card">
+                        <div class="mini-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Entrenamiento</h3>
+                        <p>Clases de obediencia básica</p>
+                    </div>
+                    
+                    <div class="service-mini-card">
+                        <div class="mini-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Guardería</h3>
+                        <p>Para vacaciones o viajes</p>
+                    </div>
+                    
+                    <div class="service-mini-card">
+                        <div class="mini-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Adopciones</h3>
+                        <p>Ayudamos a encontrar hogar</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-us">
+            <div class="container">
+                <div class="section-header">
+                    <h2>¿Por qué confiar en nosotros?</h2>
+                </div>
+                
+                <div class="reasons-grid">
+                    <div class="reason-item">
+                        <i class="fas fa-user-md"></i>
+                        <h3>Profesionales certificados</h3>
+                        <p>Todo nuestro personal está capacitado y en constante formación</p>
+                    </div>
+                    
+                    <div class="reason-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Horarios flexibles</h3>
+                        <p>Nos adaptamos a tu disponibilidad, incluso fines de semana</p>
+                    </div>
+                    
+                    <div class="reason-item">
+                        <i class="fas fa-heart"></i>
+                        <h3>Trato personalizado</h3>
+                        <p>Conocemos a cada mascota y sus necesidades específicas</p>
+                    </div>
+                    
+                    <div class="reason-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Instalaciones seguras</h3>
+                        <p>Espacios diseñados para el bienestar animal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-paw"></i>
+                        <span>Paws Paradise</span>
+                    </div>
+                    <p class="footer-text">Cuidado y bienestar para quienes nos dan amor incondicional.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/582121234567" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fas fa-paw"></i>Contacto</h4>
+                    <address>
+                        <p><i class="fas fa-phone"></i> +58 0212-1234567</p>
+                        <p><i class="fas fa-envelope"></i> pawsparadise@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Av. Principal, Carabobo</p>
+                    </address>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fas fa-paw"></i>Horarios</h4>
+                    <ul class="schedule">
+                        <li><span>Lun a Vie:</span> 08:00AM - 06:00PM</li>
+                        <li><span>Sábados:</span> 09:00AM - 04:00PM</li>
+                        <li><span>Domingos:</span> Cerrado</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fas fa-paw"></i>Enlaces rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('render_page', page_name='productos') }}">Productos</a></li>
+                        <li><a href="{{ url_for('render_page', page_name='servicios') }}">Servicios</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws Paradise. Todos los derechos reservados.</p>
+                <p class="footer-disclaimer"><i class="fas fa-paw"></i> Hecho con amor para amigos peludos</p>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

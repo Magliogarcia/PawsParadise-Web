@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws Paradise · Bienestar animal</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{{ url_for('home') }}" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Paws Paradise</span>
+                </a>
+                
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#inicio" class="active">Inicio</a></li>
+                        <li><a href="{{ url_for('render_page', page_name='productos') }}">Productos</a></li>
+                        <li><a href="{{ url_for('render_page', page_name='servicios') }}">Servicios</a></li>
+                        <li>
+                            <a href="{{ url_for('render_page', page_name='login') }}" class="btn-login-nav">
+                                <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('render_page', page_name='registro') }}" class="btn-register-nav">
+                                <i class="fas fa-user-plus"></i> Registrarse
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('render_page', page_name='carrito') }}" class="cart-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <span class="hero-badge">Bienvenidos</span>
+                        <h1>Todo para su <span class="highlight">bienestar</span></h1>
+                        <p class="hero-text">Alimentos premium, accesorios y cuidados para perros y gatos. Productos seleccionados con el mismo amor que tú les das.</p>
+                        <div class="hero-buttons">
+                            <a href="#productos" class="btn btn-primary">Ver productos</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">+10</span>
+                                <span class="stat-label">Años de experiencia</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">+5000</span>
+                                <span class="stat-label">Clientes felices</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">+200</span>
+                                <span class="stat-label">Productos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="{{ url_for('static', filename='images/pgdurmiendo.png') }}" alt="Perro y gato descansando juntos">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="servicios">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nuestros Servicios</h2>
+                    <p>Cuidado integral para tu mejor amigo</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3>Peluquería Canina</h3>
+                        <p>Baño, corte y cuidado profesional para que luzca espectacular.</p>
+                        <a href="{{ url_for('render_page', page_name='servicios') }}" class="service-link">Más info <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-clinic-medical"></i>
+                        </div>
+                        <h3>Consultas Veterinarias</h3>
+                        <p>Revisión general, vacunas y asesoramiento nutricional.</p>
+                        <a href="{{ url_for('render_page', page_name='servicios') }}" class="service-link">Más info <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 60px 0; background: var(--bg-light);">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="font-size: 2.5rem; color: var(--text-dark);">Productos Destacados</h2>
+                    <p style="color: #7f8c8d; font-size: 1.1rem;">Los favoritos de nuestros clientes peludos</p>
+                </div>
+
+                <div id="productos-destacados-inicio">
+                    <div style="text-align: center; padding: 40px; color: #7f8c8d;">
+                        <i class="fas fa-spinner fa-spin fa-2x" style="margin-bottom: 15px;"></i>
+                        <p>Cargando productos...</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="{{ url_for('render_page', page_name='productos') }}" class="btn-auth" style="padding: 12px 30px; font-size: 1.1rem; text-decoration: none; display: inline-block;">Ver todos los productos <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="nosotros">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="{{ url_for('static', filename='images/equipo.webp') }}" alt="Nuestro equipo">
+                    </div>
+                    <div class="about-content">
+                        <h2>Sobre Nosotros</h2>
+                        <p class="about-text">En Paws Paradise entendemos que las mascotas son parte fundamental de la familia. Desde 1999 nos dedicamos a proporcionar productos y servicios de la más alta calidad para el bienestar de perros y gatos.</p>
+                        <p class="about-text">Nuestro equipo está formado por amantes de los animales y profesionales veterinarios que seleccionan cuidadosamente cada producto que ofrecemos.</p>
+                        <div class="about-features">
+                            <div class="feature"><i class="fas fa-check-circle"></i><span>Atención personalizada</span></div>
+                            <div class="feature"><i class="fas fa-check-circle"></i><span>Productos de calidad premium</span></div>
+                            <div class="feature"><i class="fas fa-check-circle"></i><span>Envíos a domicilio</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values">
+            <div class="container">
+                <div class="values-grid">
+                    <div class="value-item">
+                        <i class="fas fa-heart"></i>
+                        <h3>Compromiso</h3>
+                        <p>Más de 10 años cuidando la felicidad de las mascotas.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Calidad</h3>
+                        <p>Productos seleccionados con estándares premium.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-home"></i>
+                        <h3>Familia</h3>
+                        <p>Entendemos a tu mascota como un miembro más.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Solidaridad</h3>
+                        <p>Parte de las ventas apoya refugios locales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Lo que dicen nuestros clientes</h2>
+                    <p>Experiencias reales de familias felices</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Excelente atención y productos de calidad. Mi perro Max ama el alimento que compramos aquí. ¡100% recomendado!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
+                            <div class="author-info">
+                                <h4>María González</h4>
+                                <p>Dueña de Max</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"La arena para gatos es la mejor que hemos probado. Sin olor y muy fácil de limpiar. Mis gatos están felices."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
+                            <div class="author-info">
+                                <h4>Carlos Rodríguez</h4>
+                                <p>Dueño de Luna y Simba</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-paw"></i>
+                        <span>Paws Paradise</span>
+                    </div>
+                    <p class="footer-text">Cuidado y bienestar para quienes nos dan amor incondicional.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fas fa-paw"></i>Contacto</h4>
+                    <address>
+                        <p><a href="tel:+584145812979"><i class="fas fa-phone"></i> +58 414-5812979</a></p>
+                        <p><a href="mailto:pawsparadise@gmail.com?subject=Consulta%20desde%20la%20web&body=Hola%20equipo%20de%20Paws%20Paradise,%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre:%20"><i class="fas fa-envelope"></i> pawsparadise@gmail.com</a></p>
+                        <p><a href="https://www.google.com/maps/search/?api=1&query=Av+Principal,+Los+Guayos,+Carabobo" target="_blank"><i class="fas fa-map-marker-alt"></i> Av. Principal, Carabobo</a></p>
+                    </address>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fas fa-paw"></i>Horarios</h4>
+                    <ul class="schedule">
+                        <li><span>Lun a Vie:</span> 08:00AM - 06:00PM</li>
+                        <li><span>Sábados:</span> 09:00AM - 04:00PM</li>
+                        <li><span>Domingos:</span> Cerrado</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4><i class="fas fa-paw"></i>Enlaces rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="{{ url_for('render_page', page_name='productos') }}">Productos</a></li>
+                        <li><a href="{{ url_for('render_page', page_name='servicios') }}">Servicios</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Paws Paradise. Todos los derechos reservados.</p>
+                <p class="footer-disclaimer"><i class="fas fa-paw"></i> Hecho con amor para amigos peludos</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

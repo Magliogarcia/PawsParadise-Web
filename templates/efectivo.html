@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws Paradise · Pago en efectivo</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+ </head>
+  <body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Paws Paradise</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Pago en Efectivo</h1>
+                <p>Retira en tienda y paga al momento</p>
+            </div>
+        </section>
+
+        <section class="payment-details">
+            <div class="container">
+                <div class="payment-card">
+                    <div class="order-resumen" id="order-resumen">
+                        <h2><i class="fas fa-shopping-bag"></i> Resumen de tu pedido</h2>
+                        <div id="resumen-productos"></div>
+                        <p class="total-pago" id="total-pago">Total a pagar: $0.00</p>
+                    </div>
+
+                    <div class="store-info">
+                        <i class="fas fa-store"></i>
+                        <h3>Retiro en Tienda</h3>
+                        <p><strong>Dirección:</strong> Av. Principal, Local 5, Carabobo</p>
+                        <p><strong>Horario:</strong> Lunes a Viernes 8am - 6pm, Sábados 9am - 4pm</p>
+                        <p><strong>Tiempo de preparación:</strong> 2 horas después de confirmar</p>
+                    </div>
+
+                    <div class="store-instructions">
+                        <h4><i class="fas fa-clipboard-list"></i> Pasos para retirar:</h4>
+                        <ol>
+                            <li>Presenta tu <strong>cédula de identidad</strong> al llegar</li>
+                            <li>Indica el <strong>número de pedido</strong> que aparecerá en tu factura</li>
+                            <li>Realiza el pago en efectivo en caja</li>
+                            <li>Recibe tus productos y disfruta</li>
+                        </ol>
+                    </div>
+
+                    <div class="payment-actions">
+                        <button class="btn-confirmar-pago" id="confirmar-pedido">
+                            <i class="fas fa-check-circle"></i> Confirmar pedido para retiro
+                        </button>
+                        <a href="formulario.html" class="btn-volver">
+                            <i class="fas fa-arrow-left"></i> Volver al formulario
+                        </a>
+                    </div>
+
+                    <p class="payment-note">
+                        <i class="fas fa-clock"></i> 
+                        Tienes 48 horas para retirar tu pedido, si no, se cancelará automáticamente
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-paw"></i>
+                        <span>Paws Paradise</span>
+                    </div>
+                    <p class="footer-text">Cuidado y bienestar para quienes nos dan amor incondicional.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paws Paradise. Todos los derechos reservados.</p>
+                <p class="footer-disclaimer"><i class="fas fa-paw"></i> Hecho con amor para amigos peludos</p>
+            </div>
+        </div>
+    </footer>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+ </body>
+</html>

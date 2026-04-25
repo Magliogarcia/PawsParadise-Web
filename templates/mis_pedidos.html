@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos · Paws Paradise</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="{{ url_for('home') }}" class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Paws Paradise</span>
+                </a>
+                <nav class="nav">
+                    <ul>
+                        </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section style="background: linear-gradient(135deg, #2ecc71, #3498db); padding: 120px 0 60px 0; text-align: center; color: white;">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 10px;"><i class="fas fa-box-open"></i> Mis Pedidos</h1>
+                <p style="font-size: 1.2rem; opacity: 0.9;">Rastrea el estado de tus compras en tiempo real.</p>
+            </div>
+        </section>
+
+        <section style="padding: 60px 0; background: var(--bg-light); min-height: 50vh;">
+            <div class="container" style="max-width: 800px;" id="contenedor-mis-pedidos">
+                <div style="text-align: center; padding: 50px; color: #7f8c8d;">
+                    <i class="fas fa-spinner fa-spin fa-3x" style="margin-bottom: 20px;"></i>
+                    <h3>Cargando tus pedidos...</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
