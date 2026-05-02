@@ -1,61 +1,6 @@
-from flask import Flask, render_template, request, jsonify
-import requests
+from flask import Flask, render_template
 
 app = Flask(__name__)
-
-PHP_BACKEND = "https://pawsparadise.xo.je/admin/"
-
-# ==========================================
-# PROXY - evita el problema CORS
-# ==========================================
-
-@app.route('/api/productos', methods=['GET'])
-def proxy_productos():
-    try:
-        accion = request.args.get('accion', 'listar')
-        r = requests.get(PHP_BACKEND + f'productos_api.php?accion={accion}', timeout=10)
-        return jsonify(r.json())
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
-
-@app.route('/api/login', methods=['POST'])
-def proxy_login():
-    try:
-        r = requests.post(PHP_BACKEND + 'login_ajax.php', data=request.form, timeout=10)
-        return jsonify(r.json())
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
-
-@app.route('/api/registro', methods=['POST'])
-def proxy_registro():
-    try:
-        r = requests.post(PHP_BACKEND + 'registro.php', data=request.form, timeout=10)
-        return jsonify(r.json())
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
-
-@app.route('/api/pedidos', methods=['GET', 'POST'])
-def proxy_pedidos():
-    try:
-        if request.method == 'GET':
-            r = requests.get(PHP_BACKEND + 'pedidos_api.php', params=request.args, timeout=10)
-        else:
-            r = requests.post(PHP_BACKEND + 'pedidos_api.php', data=request.form, timeout=10)
-        return jsonify(r.json())
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
-
-@app.route('/api/cerrar_sesion', methods=['POST'])
-def proxy_cerrar_sesion():
-    try:
-        r = requests.post(PHP_BACKEND + 'cerrar_sesion.php', timeout=10)
-        return jsonify(r.json())
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
-
-# ==========================================
-# PÁGINAS
-# ==========================================
 
 @app.route('/')
 @app.route('/index.html')
