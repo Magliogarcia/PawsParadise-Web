@@ -19,6 +19,13 @@
                 </a>
                 
                 <nav class="nav">
+
+                    <button class="menu-hamburguesa" id="menu-toggle" aria-label="Abrir menú">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
                     <ul>
                         <li><a href="{{ url_for('home') }}">Inicio</a></li>
                         <li><a href="{{ url_for('render_page', page_name='productos') }}">Productos</a></li>
