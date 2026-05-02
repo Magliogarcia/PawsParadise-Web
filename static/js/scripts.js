@@ -2,7 +2,6 @@
 // 1. SISTEMA DE NOTIFICACIONES Y VENTANAS (MODALES)
 // ==========================================
 
-// NUEVO: Sistema de Notificaciones Flotantes (Toasts) - ¡Adiós alert() nativo!
 window.mostrarNotificacionLocal = function(mensaje, tipo = 'success') {
     const toast = document.createElement('div');
     toast.style.position = 'fixed';
@@ -28,13 +27,11 @@ window.mostrarNotificacionLocal = function(mensaje, tipo = 'success') {
 
     document.body.appendChild(toast);
 
-    // Animar entrada
     setTimeout(() => {
         toast.style.transform = 'translateY(0)';
         toast.style.opacity = '1';
     }, 10);
 
-    // Desaparecer después de 3 segundos
     setTimeout(() => {
         toast.style.transform = 'translateY(100px)';
         toast.style.opacity = '0';
@@ -42,7 +39,6 @@ window.mostrarNotificacionLocal = function(mensaje, tipo = 'success') {
     }, 3000);
 };
 
-// Creador de ventanas de confirmación profesionales - ¡Adiós confirm() nativo!
 window.mostrarConfirmacion = function(mensaje, callback) {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
@@ -98,6 +94,8 @@ window.mostrarConfirmacion = function(mensaje, callback) {
 // ==========================================
 // 2. SESIÓN Y AUTENTICACIÓN
 // ==========================================
+const BASE_URL = 'https://pawsparadise.xo.je/php_backend/admin/';
+
 async function getSesionActual() {
     const sesionGuardada = localStorage.getItem('sesionActual');
     return sesionGuardada ? JSON.parse(sesionGuardada) : null;
@@ -105,13 +103,13 @@ async function getSesionActual() {
 
 async function cerrarSesion() {
     localStorage.removeItem('sesionActual');
-    await fetch('admin/cerrar_sesion.php').catch(() => {});
+    await fetch(BASE_URL + 'cerrar_sesion.php').catch(() => {});
     window.location.href = 'index.html';
 }
 
 async function registrarUsuario(nombre, apellido, cedula, email, telefono, password, tipo) {
     try {
-        const response = await fetch('admin/registro.php', {
+        const response = await fetch(BASE_URL + 'registro.php', {
             method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ nombre, apellido, cedula, email, telefono, password, tipo })
         });
@@ -122,7 +120,7 @@ async function registrarUsuario(nombre, apellido, cedula, email, telefono, passw
 
 async function iniciarSesion(email, password) {
     try {
-        const response = await fetch('admin/login_ajax.php', {
+        const response = await fetch(BASE_URL + 'login_ajax.php', {
             method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
         });
@@ -195,13 +193,12 @@ function actualizarContadorCarrito() {
     document.querySelectorAll('.cart-count').forEach(c => c.textContent = total);
 }
 
-// RENDERIZAR PRODUCTOS DESTACADOS EN EL INICIO
 async function cargarProductosDestacados() {
     const contenedor = document.getElementById('productos-destacados-inicio');
     if (!contenedor) return;
 
     try {
-        const response = await fetch('admin/productos_api.php?accion=listar');
+        const response = await fetch(BASE_URL + 'productos_api.php?accion=listar');
         const data = await response.json();
         
         if (data.success && data.productos.length > 0) {
@@ -240,7 +237,7 @@ async function cargarProductosTienda() {
     if (!contenedor) return;
 
     try {
-        const response = await fetch('admin/productos_api.php?accion=listar');
+        const response = await fetch(BASE_URL + 'productos_api.php?accion=listar');
         const data = await response.json();
         
         if (data.success && data.productos.length > 0) {
@@ -345,7 +342,7 @@ async function cargarMisPedidos() {
     if (!sesion) { window.location.href = 'login.html'; return; }
 
     try {
-        const response = await fetch(`admin/pedidos_api.php?accion=listar_cliente&usuario_id=${sesion.id}`);
+        const response = await fetch(BASE_URL + `pedidos_api.php?accion=listar_cliente&usuario_id=${sesion.id}`);
         const data = await response.json();
 
         if (data.success) {
@@ -453,7 +450,7 @@ async function cargarInventarioAdmin() {
 
     try {
         const sesion = await getSesionActual();
-        const response = await fetch(`admin/productos_api.php?accion=listar&rol_usuario=${sesion ? sesion.tipo : ''}`);
+        const response = await fetch(BASE_URL + `productos_api.php?accion=listar&rol_usuario=${sesion ? sesion.tipo : ''}`);
         const data = await response.json();
         
         if (data.success) {
@@ -490,7 +487,7 @@ window.eliminarProductoAdmin = function(id, nombre) {
 async function ejecutarEliminacion(id) {
     try {
         const sesion = await getSesionActual();
-        const response = await fetch('admin/productos_api.php?accion=eliminar', {
+        const response = await fetch(BASE_URL + 'productos_api.php?accion=eliminar', {
             method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: `id=${id}&rol_usuario=${sesion ? sesion.tipo : ''}`
         });
         const data = await response.json();
@@ -504,7 +501,7 @@ async function cargarPedidosAdmin() {
 
     try {
         const sesion = await getSesionActual();
-        const response = await fetch(`admin/pedidos_api.php?accion=listar_admin&rol_usuario=${sesion ? sesion.tipo : ''}`);
+        const response = await fetch(BASE_URL + `pedidos_api.php?accion=listar_admin&rol_usuario=${sesion ? sesion.tipo : ''}`);
         const data = await response.json();
 
         if (data.success) {
@@ -537,7 +534,7 @@ async function cargarPedidosAdmin() {
 window.cambiarEstadoPedido = async function(id, nuevoEstado, selectElement) {
     try {
         const sesion = await getSesionActual();
-        const response = await fetch('admin/pedidos_api.php?accion=actualizar_estado', {
+        const response = await fetch(BASE_URL + 'pedidos_api.php?accion=actualizar_estado', {
             method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, 
             body: `id=${id}&estado=${nuevoEstado}&rol_usuario=${sesion ? sesion.tipo : ''}`
         });
@@ -668,7 +665,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     formData.append('metodo_pago', metodo);
                     formData.append('productos', JSON.stringify(carrito));
 
-                    const response = await fetch('admin/pedidos_api.php?accion=crear', {
+                    const response = await fetch(BASE_URL + 'pedidos_api.php?accion=crear', {
                         method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: formData
                     });
                     const result = await response.json();
@@ -694,7 +691,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         btnCheckout.addEventListener('click', async (e) => {
             e.preventDefault();
             
-            // REEMPLAZO DEL CONFIRM() NATIVO
             if (!sesionActual) { 
                 mostrarConfirmacion('Inicia sesión para pagar. ¿Ir a login?', (ir) => {
                     if (ir) window.location.href = 'login.html';
@@ -751,7 +747,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             formData.append('rol_usuario', sesionActual ? sesionActual.tipo : '');
 
             try {
-                const response = await fetch('admin/productos_api.php?accion=guardar', { method: 'POST', body: formData });
+                const response = await fetch(BASE_URL + 'productos_api.php?accion=guardar', { method: 'POST', body: formData });
                 const data = await response.json();
                 if (data.success) { mostrarNotificacionLocal(data.message, 'success'); cerrarModalProducto(); cargarInventarioAdmin(); } 
                 else { mostrarNotificacionLocal(data.error, 'error'); }
