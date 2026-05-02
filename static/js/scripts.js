@@ -772,3 +772,23 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (window.location.pathname.includes('carrito.html')) mostrarCarrito();
     if (window.location.pathname.includes('mis_pedidos.html')) cargarMisPedidos();
 });
+
+
+// ===== MENÚ HAMBURGUESA =====
+const menuToggle = document.getElementById('menu-toggle');
+const nav = document.querySelector('.nav');
+
+if (menuToggle && nav) {
+    menuToggle.addEventListener('click', function() {
+        this.classList.toggle('abierto');
+        nav.classList.toggle('abierto');
+    });
+
+    // Cerrar menú al hacer click en un enlace
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('abierto');
+            nav.classList.remove('abierto');
+        });
+    });
+}
