@@ -94,7 +94,7 @@ window.mostrarConfirmacion = function(mensaje, callback) {
 // ==========================================
 // 2. SESIÓN Y AUTENTICACIÓN
 // ==========================================
-const BASE_URL = 'https://pawsparadise.xo.je/admin/';
+const BASE_URL = '/api/';
 
 async function getSesionActual() {
     const sesionGuardada = localStorage.getItem('sesionActual');
