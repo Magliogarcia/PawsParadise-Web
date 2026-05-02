@@ -94,7 +94,7 @@ window.mostrarConfirmacion = function(mensaje, callback) {
 // ==========================================
 // 2. SESIÓN Y AUTENTICACIÓN
 // ==========================================
-const BASE_URL = '/api/';
+const BASE_URL = 'https://pawsparadise-backend-production.up.railway.app/admin/';
 
 async function getSesionActual() {
     const sesionGuardada = localStorage.getItem('sesionActual');
