@@ -50,12 +50,14 @@
                     <i class="fas fa-paw"></i>
                     <span>Paws Paradise</span>
                 </a>
+
+                <button class="menu-hamburguesa" id="menu-toggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
                 <nav class="nav">
-                    <button class="menu-hamburguesa" id="menu-toggle" aria-label="Abrir menú">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
                     <ul>
                         <li><a href="{{ url_for('render_page', page_name='productos') }}">Ver Tienda</a></li>
                         <li><a href="#" style="color: var(--danger);" onclick="cerrarSesion(); return false;"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
