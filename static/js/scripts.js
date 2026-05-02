@@ -553,6 +553,7 @@ window.cambiarEstadoPedido = async function(id, nuevoEstado, selectElement) {
 document.addEventListener('DOMContentLoaded', async function() {
     await actualizarMenuUsuario();
     actualizarContadorCarrito();
+    iniciarMenuHamburguesa();
     const sesionActual = await getSesionActual();
     
     // Login
@@ -775,20 +776,30 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 
 // ===== MENÚ HAMBURGUESA =====
-const menuToggle = document.getElementById('menu-toggle');
-const nav = document.querySelector('.nav');
+function iniciarMenuHamburguesa() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav-principal');
+    if (!menuToggle || !nav) return;
 
-if (menuToggle && nav) {
+    // Abrir/cerrar al hacer click en hamburguesa
     menuToggle.addEventListener('click', function() {
         this.classList.toggle('abierto');
         nav.classList.toggle('abierto');
     });
 
-    // Cerrar menú al hacer click en un enlace
-    nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
+    // Cerrar al hacer click en cualquier enlace del menú
+    nav.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
             menuToggle.classList.remove('abierto');
             nav.classList.remove('abierto');
-        });
+        }
+    });
+
+    // Cerrar al hacer click fuera del menú
+    document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+            menuToggle.classList.remove('abierto');
+            nav.classList.remove('abierto');
+        }
     });
 }

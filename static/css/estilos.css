@@ -2720,13 +2720,13 @@ h4 { font-size: 1.25rem; }
     display: none;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
+    gap: 6px;
     width: 44px;
     height: 44px;
     background: none;
-    border: none;
+    border: 2px solid var(--primary);
     cursor: pointer;
-    padding: 6px;
+    padding: 8px;
     border-radius: 8px;
     transition: background 0.2s;
     z-index: 1100;
@@ -2742,20 +2742,19 @@ h4 { font-size: 1.25rem; }
     height: 3px;
     background: var(--primary);
     border-radius: 3px;
-    transition: all 0.3s ease;
+    transition: all 0.35s ease;
     transform-origin: center;
 }
 
-/* Animación X al abrir */
 .menu-hamburguesa.abierto span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(9px) rotate(45deg);
 }
 .menu-hamburguesa.abierto span:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
 }
 .menu-hamburguesa.abierto span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
@@ -2763,48 +2762,46 @@ h4 { font-size: 1.25rem; }
         display: flex;
     }
 
-    .nav {
+    #nav-principal {
         position: fixed;
         top: 80px;
         left: 0;
         right: 0;
         background: white;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        padding: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.3s ease;
+        transition: max-height 0.4s ease;
         z-index: 999;
         border-top: 3px solid var(--primary);
     }
 
-    .nav.abierto {
-        max-height: 500px;
-        padding: 15px 0;
+    #nav-principal.abierto {
+        max-height: 600px;
     }
 
-    .nav ul {
+    #nav-principal ul {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        padding: 0 20px;
+        padding: 10px 20px 20px;
     }
 
-    .nav ul li {
+    #nav-principal ul li {
         border-bottom: 1px solid var(--bg-gray);
     }
 
-    .nav ul li:last-child {
+    #nav-principal ul li:last-child {
         border-bottom: none;
     }
 
-    .nav a {
+    #nav-principal a {
         display: block;
-        padding: 14px 10px !important;
-        font-size: 1.1rem;
+        padding: 14px 8px !important;
+        font-size: 1.05rem;
     }
 
-    .nav a::after {
+    #nav-principal a::after {
         display: none;
     }
 
@@ -2814,11 +2811,13 @@ h4 { font-size: 1.25rem; }
         text-align: center;
         margin: 8px 0 !important;
         border-radius: 10px !important;
+        padding: 12px !important;
     }
 
     .cart-link {
         justify-content: center;
         border-radius: 10px !important;
         margin: 8px 0;
+        padding: 12px !important;
     }
 }
