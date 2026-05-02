@@ -206,7 +206,7 @@ async function cargarProductosDestacados() {
             let html = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;">';
             
             destacados.forEach(prod => {
-                const imgSrc = prod.imagen ? `https://pawsparadise.xo.je/${prod.imagen}` : 'https://via.placeholder.com/300?text=Sin+Imagen';
+                const imgSrc = prod.imagen ? `https://pawsparadise-backend-production.up.railway.app/${prod.imagen}` : 'https://via.placeholder.com/300?text=Sin+Imagen';
                 const btnCart = prod.stock > 0 ? `<button class="btn-add-cart btn-auth" style="width:100%; padding:12px; border-radius:8px;" onclick="agregarAlCarrito(${prod.id}, '${prod.nombre.replace(/'/g, "\\'")}', ${prod.precio}, ${prod.stock})"><i class="fas fa-shopping-cart"></i> Agregar</button>` : `<button disabled style="width:100%; padding:12px; background:#bdc3c7; color:white; border:none; border-radius:8px; cursor:not-allowed;">Agotado</button>`;
                 
                 html += `
