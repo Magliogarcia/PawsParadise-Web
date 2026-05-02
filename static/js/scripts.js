@@ -251,7 +251,7 @@ async function cargarProductosTienda() {
                     html += `<div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">`;
                     
                     prodsCat.forEach(prod => {
-                        const imgSrc = prod.imagen ? `https://pawsparadise.xo.je/${prod.imagen}` : 'https://via.placeholder.com/300?text=Sin+Imagen';
+                        const imgSrc = prod.imagen ? `https://pawsparadise-backend-production.up.railway.app/${prod.imagen}` : 'https://via.placeholder.com/300?text=Sin+Imagen';
                         const stockBadge = prod.stock > 0 ? `<span style="background:#e8f8f5; color:#27ae60; padding:5px 12px; border-radius:20px; font-size:0.85rem; font-weight:bold; float:right;">Stock: ${prod.stock}</span>` : `<span style="background:#fee2e2; color:#e74c3c; padding:5px 12px; border-radius:20px; font-size:0.85rem; font-weight:bold; float:right;">Agotado</span>`;
                         const btnCart = prod.stock > 0 ? `<button class="btn-add-cart btn-auth" style="width:100%; padding:12px; border-radius:8px;" onclick="agregarAlCarrito(${prod.id}, '${prod.nombre.replace(/'/g, "\\'")}', ${prod.precio}, ${prod.stock})"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>` : `<button disabled style="width:100%; padding:12px; background:#bdc3c7; color:white; border:none; border-radius:8px; cursor:not-allowed;">Agotado</button>`;
                         
@@ -360,7 +360,7 @@ async function cargarMisPedidos() {
                 let detallesHtml = '';
                 if (ped.detalles && ped.detalles.length > 0) {
                     ped.detalles.forEach(det => {
-                        const imgSrc = det.imagen ? `/static/${det.imagen}` : 'https://via.placeholder.com/50?text=Foto';
+                        const imgSrc = det.imagen ? `https://pawsparadise-backend-production.up.railway.app/${det.imagen}` : 'https://via.placeholder.com/50?text=Foto';
                         detallesHtml += `
                             <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #eee;">
                                 <div style="display:flex; align-items:center; gap:15px;">
@@ -458,7 +458,7 @@ async function cargarInventarioAdmin() {
             let html = '';
             data.productos.forEach(prod => {
                 let stockClass = prod.stock === 0 ? 'stock-out' : (prod.stock <= 5 ? 'stock-low' : 'stock-ok');
-                const imgSrc = prod.imagen ? `/static/${prod.imagen}` : 'https://via.placeholder.com/50?text=Foto';
+                const imgSrc = prod.imagen ? `https://pawsparadise-backend-production.up.railway.app/${prod.imagen}` : 'https://via.placeholder.com/50?text=Foto';
                 const prodJSON = JSON.stringify(prod).replace(/'/g, "&#39;");
                 
                 html += `<tr>
